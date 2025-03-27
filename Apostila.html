@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila Joomla</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1 {
+            color: #1a3c6e;
+            border-bottom: 2px solid #1a3c6e;
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        h2 {
+            color: #2b5797;
+            margin-top: 30px;
+            font-size: 20px;
+            border-left: 4px solid #2b5797;
+            padding-left: 10px;
+        }
+        
+        h3 {
+            color: #366ab3;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+        h4 {
+            color: #4682b4;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            border-left: none;
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: #366ab3;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+        
+        .subsection {
+            margin-left: 20px;
+        }
+        
+        @media print {
+            body {
+                font-size: 12pt;
+            }
+            
+            h1 {
+                font-size: 18pt;
+            }
+            
+            h2 {
+                font-size: 16pt;
+                page-break-after: avoid;
+            }
+            
+            h3 {
+                font-size: 14pt;
+                page-break-after: avoid;
+            }
+            
+            h4 {
+                font-size: 12pt;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                page-break-inside: avoid;
+            }
+            
+            @page {
+                margin: 2cm;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+        
+        .print-button {
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        
+        .print-button:hover {
+            background-color: #366ab3;
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <button class="print-button" onclick="window.print()">Imprimir Apostila</button>
+    </div>
+
+    <h1>Apostila Joomla</h1>
+    
+    <div class="toc">
+        <h2>Índice</h2>
+        <ol>
+            <li><a href="#introducao">Introdução ao Joomla</a></li>
+            <li><a href="#usuarios">Usuários</a></li>
+            <li><a href="#componentes">Componentes</a></li>
+            <li><a href="#plugins">Plugins</a></li>
+            <li><a href="#modulos">Módulos</a></li>
+            <li><a href="#templating">Templating e Design</a></li>
+            <li><a href="#gerenciamento">Gerenciamento de Conteúdo</a></li>
+            <li><a href="#seguranca">Segurança e Manutenção</a></li>
+        </ol>
+    </div>
+
+    <div class="section" id="introducao">
+        <h2>1. Introdução ao Joomla</h2>
+        <p>Joomla é um sistema de gerenciamento de conteúdo (CMS) de código aberto, amplamente utilizado para criar e gerenciar websites. Ele oferece uma interface intuitiva e é altamente extensível, permitindo a adição de componentes, plugins e módulos. Nesta apostila, abordaremos os conceitos básicos para começar a usar o Joomla, incluindo a criação de usuários, a instalação de componentes e plugins, e como administrar o conteúdo do seu site.</p>
+    </div>
+
+    <div class="section" id="usuarios">
+        <h2>2. Usuários</h2>
+        <p>No Joomla, você pode gerenciar usuários com diferentes níveis de acesso e permissões. Existem cinco grupos principais de usuários: Super Administrador, Administrador, Gerente, Autor e Assinante. Abaixo, explicamos como gerenciar esses usuários e atribuir permissões para cada grupo.</p>
+        
+        <p>Para adicionar um novo usuário, vá até o menu 'Usuários' > 'Gerenciar'. Lá, você poderá adicionar novos usuários e definir suas permissões. Para gerenciar permissões, basta acessar 'Usuários' > 'Grupos de Usuários' e configurar as permissões de cada grupo.</p>
+        
+        <div class="subsection">
+            <h3>Usuários - Grupos no Joomla</h3>
+            <p>No Joomla, grupos de usuários são uma maneira de organizar e gerenciar os níveis de acesso e permissões dos usuários. Cada grupo de usuários pode ter permissões específicas sobre o que pode ser acessado ou modificado dentro do site. Esses grupos ajudam a controlar quem pode editar, criar ou visualizar determinado conteúdo.</p>
+            
+            <h4>Como Gerenciar Grupos de Usuários no Joomla?</h4>
+            <ol>
+                <li>
+                    <strong>Acessando o Gerenciador de Grupos de Usuários</strong>
+                    <ul>
+                        <li>No painel administrativo, vá para Usuários > Grupos.</li>
+                        <li>Aqui você verá uma lista de todos os grupos de usuários já criados no site.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Criando um Novo Grupo de Usuários</strong>
+                    <ul>
+                        <li>Clique em Novo no canto superior esquerdo.</li>
+                        <li>Defina o Nome do grupo e a Descrição (opcional).</li>
+                        <li>Se desejar, você pode criar um grupo filho de outro grupo. Por exemplo, você pode criar um grupo "Editor Júnior" dentro de um grupo principal "Editor".</li>
+                        <li>Após preencher as informações, clique em Salvar & Fechar.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Editando um Grupo de Usuários</strong>
+                    <ul>
+                        <li>Para editar um grupo de usuários existente, clique sobre o nome do grupo na lista.</li>
+                        <li>Altere as configurações conforme necessário, como adicionar ou remover permissões, e clique em Salvar & Fechar.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Excluindo um Grupo de Usuários</strong>
+                    <ul>
+                        <li>Para excluir um grupo, selecione o grupo na lista e clique em Excluir.</li>
+                        <li>Confirme a exclusão.</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h4>Permissões e Atribuições de Grupos</h4>
+            <p>Cada grupo de usuários pode ter permissões específicas que determinam suas ações no site. O Joomla permite controlar permissões de forma detalhada:</p>
+            
+            <h5>Tipos de Permissões</h5>
+            <ul>
+                <li><strong>Visualizar:</strong> Permite que o grupo visualize o conteúdo.</li>
+                <li><strong>Editar:</strong> Permite que o grupo edite artigos e outros conteúdos.</li>
+                <li><strong>Publicar:</strong> Permite que o grupo publique conteúdo no site.</li>
+                <li><strong>Excluir:</strong> Permite que o grupo exclua artigos e outros itens.</li>
+                <li><strong>Gerenciar:</strong> Permite que o grupo gerencie outros usuários ou configurações administrativas.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" id="componentes">
+        <h2>3. Componentes</h2>
+        <p>Componentes são as partes principais de um site Joomla. Eles são responsáveis por fornecer a funcionalidade básica do site. O Joomla já vem com alguns componentes instalados, como o 'Artigos', 'Menus', 'Contatos', entre outros.</p>
+        
+        <p>Para instalar novos componentes, vá até 'Extensões' > 'Gerenciar' > 'Instalar'. Uma vez instalado, você pode configurar o componente a partir do menu 'Componentes'.</p>
+        
+        <div class="subsection">
+            <h3>O que são Componentes</h3>
+            <p>Os componentes no Joomla são as extensões que fornecem funcionalidades principais ao site. Cada componente tem uma interface administrativa e uma parte que é exibida no frontend do site. Eles são como os "núcleos" de um site Joomla, controlando a maioria das operações essenciais.</p>
+
+            <h4>Estrutura de Componentes</h4>
+            <p>Cada componente geralmente consiste em três partes principais:</p>
+            <ol>
+                <li><strong>Administração:</strong> Parte usada para configurar o componente, incluindo opções de backend.</li>
+                <li><strong>Frontend:</strong> Parte visível aos visitantes do site, onde o componente exibe conteúdo ou funcionalidades.</li>
+                <li><strong>Banco de Dados:</strong> Alguns componentes interagem com o banco de dados do site para armazenar informações, como artigos ou registros de formulários.</li>
+            </ol>
+
+            <h4>Exemplos de Componentes no Joomla</h4>
+            <ol>
+                <li>
+                    <strong>Artigos (com_content)</strong>
+                    <ul>
+                        <li>O componente padrão para exibir artigos no Joomla.</li>
+                        <li>Ele permite que você crie, edite e organize artigos e categorias.</li>
+                        <li>O conteúdo pode ser exibido de várias formas, como artigos individuais, blogs, listas de categorias, etc.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Menu</strong>
+                    <ul>
+                        <li>Gerencia a estrutura de navegação do seu site.</li>
+                        <li>Você pode adicionar, remover e organizar os itens de menu através deste componente.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Contatos (com_contact)</strong>
+                    <ul>
+                        <li>Permite criar formulários de contato para que os visitantes possam enviar mensagens diretamente ao administrador do site.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section" id="plugins">
+        <h2>4. Plugins</h2>
+        <p>Os plugins são extensões que adicionam funcionalidades específicas ao Joomla. Eles são ativados quando um determinado evento ocorre no sistema, como o envio de um formulário ou a visualização de uma página.</p>
+        
+        <p>Para gerenciar plugins, vá em 'Extensões' > 'Plugins'. Você pode ativar, desativar e configurar plugins a partir desse menu.</p>
+    </div>
+
+    <div class="section" id="modulos">
+        <h2>5. Módulos</h2>
+        <p>Os módulos são unidades de conteúdo que podem ser exibidas em diferentes posições no seu site. Os módulos podem ser menus, pesquisas, banners, entre outros.</p>
+        
+        <p>Para gerenciar módulos, vá em 'Extensões' > 'Módulos'. Lá, você pode criar, editar e atribuir módulos a diferentes posições dentro do seu template.</p>
+        
+        <div class="subsection">
+            <h3>Módulos no Joomla</h3>
+            <p>Os módulos no Joomla são pequenos blocos de conteúdo que podem ser exibidos em diferentes partes do site. Eles são usados para mostrar informações como menus, pesquisas, artigos em destaque, banners e muito mais.</p>
+
+            <h4>Acessando o Gerenciador de Módulos</h4>
+            <ul>
+                <li>No painel administrativo, vá até "Extensões" → "Módulos".</li>
+                <li>Aqui, você verá a lista de módulos ativos no site.</li>
+            </ul>
+
+            <h4>Criando um Novo Módulo</h4>
+            <ol>
+                <li>Clique em "Novo" para adicionar um novo módulo.</li>
+                <li>Escolha o tipo de módulo desejado (ex: Menu, Artigos Populares, Login, Pesquisa).</li>
+                <li>Configure os seguintes campos:
+                    <ul>
+                        <li>Título: Nome do módulo.</li>
+                        <li>Posição: Escolha onde o módulo será exibido (dependendo do template).</li>
+                        <li>Status: Mantenha "Publicado" para ativá-lo.</li>
+                        <li>Atribuição de Menu: Escolha em quais páginas o módulo aparecerá.</li>
+                    </ul>
+                </li>
+                <li>Clique em "Salvar & Fechar".</li>
+            </ol>
+
+            <h4>Principais Tipos de Módulos</h4>
+            <ul>
+                <li><strong>Menu:</strong> Exibe um menu de navegação.</li>
+                <li><strong>Artigos em Destaque:</strong> Mostra artigos marcados como destaque.</li>
+                <li><strong>Pesquisa:</strong> Adiciona um campo de busca ao site.</li>
+                <li><strong>Login:</strong> Permite login de usuários no site.</li>
+                <li><strong>HTML Personalizado:</strong> Permite adicionar conteúdo customizado (texto, imagens, código HTML).</li>
+                <li><strong>Banners:</strong> Exibe anúncios ou imagens promocionais.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" id="templating">
+        <h2>6. Templating e Design</h2>
+        <p>O Joomla utiliza templates para controlar o design e a aparência do seu site. Existem templates padrão, mas você pode instalar novos templates para personalizar o visual do seu site.</p>
+        
+        <p>Para gerenciar templates, vá em 'Extensões' > 'Templates'. Aqui, você pode escolher o template padrão e personalizar suas configurações.</p>
+    </div>
+
+    <div class="section" id="gerenciamento">
+        <h2>7. Gerenciamento de Conteúdo</h2>
+        <p>Para criar e gerenciar o conteúdo do seu site, o Joomla oferece a ferramenta 'Artigos'. Você pode criar artigos, categorias e gerenciar o conteúdo do seu site com facilidade.</p>
+        
+        <p>Para adicionar artigos, vá em 'Conteúdo' > 'Artigos' > 'Adicionar Novo'. Você pode adicionar texto, imagens, vídeos e outros elementos ao seu artigo.</p>
+        
+        <p>Além disso, você pode organizar seus artigos em categorias, facilitando a navegação do usuário no site.</p>
+        
+        <div class="subsection">
+            <h3>Artigos no Joomla</h3>
+            <p>Os artigos no Joomla são os principais elementos de conteúdo do site. Eles podem conter textos, imagens, vídeos e outros elementos, organizados por categorias para facilitar a navegação e o gerenciamento.</p>
+
+            <h4>Criando um Artigo no Joomla</h4>
+            <ol>
+                <li>
+                    <strong>Acessar o Gerenciador de Artigos:</strong>
+                    <ul>
+                        <li>No painel administrativo, vá até "Conteúdo" → "Artigos".</li>
+                        <li>Clique em "Novo" para criar um artigo.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Preencher as Informações do Artigo:</strong>
+                    <ul>
+                        <li>Título: Nome do artigo.</li>
+                        <li>Alias: Nome amigável para a URL (opcional, gerado automaticamente se não preenchido).</li>
+                        <li>Categoria: Escolha uma categoria para organizar o artigo.</li>
+                        <li>Conteúdo: Use o editor de texto para escrever e formatar o artigo.</li>
+                        <li>Imagens e Mídia: Insira imagens e vídeos conforme necessário.</li>
+                        <li>Tags: Adicione palavras-chave para facilitar a busca.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Configurações Adicionais:</strong>
+                    <ul>
+                        <li>Status: Publicado, não publicado, arquivado ou movido para a lixeira.</li>
+                        <li>Acesso: Defina quem pode visualizar o artigo (público, registrado, etc.).</li>
+                        <li>Destaque: Marque como "Sim" para exibir o artigo na página inicial.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Salvar e Publicar:</strong>
+                    <ul>
+                        <li>Clique em "Salvar" para manter as alterações.</li>
+                        <li>Clique em "Salvar & Fechar" para finalizar a edição.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Artigos em Destaque</h4>
+            <p>Os artigos em destaque no Joomla são artigos selecionados para aparecer na página inicial ou em seções especiais do site. Eles permitem destacar conteúdos importantes e são uma forma eficaz de organizar a apresentação de informações.</p>
+
+            <h5>Como Destacar um Artigo no Joomla</h5>
+            <ol>
+                <li>
+                    <strong>Criar ou Editar um Artigo</strong>
+                    <ul>
+                        <li>No painel administrativo, vá até "Conteúdo" → "Artigos".</li>
+                        <li>Clique em "Novo" para criar um artigo ou edite um artigo existente.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Marcar como Destaque</strong>
+                    <ul>
+                        <li>No campo "Destaque", selecione "Sim".</li>
+                        <li>Clique em "Salvar & Fechar" para aplicar as alterações.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section" id="seguranca">
+        <h2>8. Segurança e Manutenção</h2>
+        <p>A segurança é uma parte essencial ao usar o Joomla. Para garantir que seu site esteja protegido, é importante manter o Joomla e suas extensões sempre atualizados.</p>
+        
+        <p>Além disso, você pode usar o menu 'Sistema' > 'Configuração Global' para configurar as opções de segurança, como permitir ou bloquear o acesso a determinadas áreas do site e configurar as permissões de usuários.</p>
+        
+        <p>Para manter o seu site Joomla seguro, é importante também realizar backups regulares e monitorar possíveis vulnerabilidades.</p>
+        
+        <div class="subsection">
+            <h3>Atualizações</h3>
+            <p>No Joomla, a área de Atualizações permite que você mantenha o seu site e suas extensões atualizados, garantindo a segurança, o desempenho e a compatibilidade do sistema. A atualização do Joomla e das extensões é uma parte crucial para o bom funcionamento do seu site, já que novas versões frequentemente corrigem erros, melhoram funcionalidades e, mais importante, corrigem vulnerabilidades de segurança.</p>
+
+            <h4>Como Acessar a Área de Atualizações no Joomla</h4>
+            <ol>
+                <li>Acesse o painel de administração do Joomla.</li>
+                <li>No menu superior, clique em Sistema.</li>
+                <li>No submenu, você encontrará uma opção chamada Atualizações. Clique nela para acessar a interface de atualização.</li>
+            </ol>
+
+            <h3>Backup</h3>
+            <p>No Joomla, realizar backup do seu site é uma das tarefas mais importantes para garantir que você possa restaurá-lo em caso de problemas. O backup deve incluir tanto os arquivos do site quanto o banco de dados, pois ambos são essenciais para a operação do seu site.</p>
+
+            <h4>Como Realizar um Backup no Joomla</h4>
+            <h5>1. Backup Manual (Arquivos e Banco de Dados)</h5>
+            <p><strong>Backup dos Arquivos:</strong></p>
+            <ol>
+                <li>Acesse o servidor onde o seu site Joomla está hospedado usando um cliente FTP (como FileZilla) ou o Gerenciador de Arquivos no painel de controle do seu servidor (como cPanel).</li>
+                <li>Baixe todos os arquivos do seu site. Isso inclui a pasta principal do Joomla e todas as suas subpastas, como:
+                    <ul>
+                        <li>/images/ (imagens)</li>
+                        <li>/media/ (mídia)</li>
+                        <li>/templates/ (templates personalizados)</li>
+                        <li>/components/ (componentes)</li>
+                        <li>/modules/ (módulos)</li>
+                        <li>/plugins/ (plugins)</li>
+                        <li>Todos os arquivos e pastas do Joomla que estão no diretório raiz.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="no-print">
+        <button class="print-button" onclick="window.print()">Imprimir Apostila</button>
+    </div>
+
+    <script>
+        // Função para imprimir a página
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

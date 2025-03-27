@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos Visuais de Itens de Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                    }
+                }
+            }
+        }
+
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize category navigation
+            const categoryLinks = document.querySelectorAll('[data-category]');
+            const categoryContents = document.querySelectorAll('[data-content]');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const sidebarMenu = document.getElementById('sidebar-menu');
+
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', function() {
+                sidebarMenu.classList.toggle('hidden');
+            });
+
+            // Category navigation
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Hide mobile menu after selection on small screens
+                    if (window.innerWidth < 768) {
+                        sidebarMenu.classList.add('hidden');
+                    }
+                    
+                    // Update active class
+                    categoryLinks.forEach(el => {
+                        el.classList.remove('bg-primary', 'text-white');
+                        el.classList.add('hover:bg-gray-100', 'dark:hover:bg-gray-700');
+                    });
+                    this.classList.remove('hover:bg-gray-100', 'dark:hover:bg-gray-700');
+                    this.classList.add('bg-primary', 'text-white');
+                    
+                    // Show selected content
+                    categoryContents.forEach(content => {
+                        if (content.getAttribute('data-content') === category) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Select first category by default
+            categoryLinks[0].click();
+        });
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+    <div class="container mx-auto px-4 py-6">
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-center text-primary">Exemplos Visuais de Itens de Menu</h1>
+            <p class="text-center mt-2">Guia visual para diferentes tipos de itens de menu</p>
+        </header>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex justify-between items-center mb-4">
+            <button id="mobile-menu-button" class="px-4 py-2 bg-primary text-white rounded-md flex items-center">
+                <i class="fas fa-bars mr-2"></i> Categorias
+            </button>
+            <div id="current-category" class="font-medium"></div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Sidebar Navigation -->
+            <aside id="sidebar-menu" class="hidden md:block w-full md:w-64 flex-shrink-0 mb-6 md:mb-0">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+                    <h2 class="font-bold text-lg mb-4">Categorias</h2>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" data-category="artigos" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-newspaper mr-2"></i> Artigos</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">7</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="busca" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-search mr-2"></i> Busca Inteligente</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">1</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="configuracoes" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-cog mr-2"></i> Configurações</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="contatos" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-address-book mr-2"></i> Contatos</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">5</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="links" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-link mr-2"></i> Links de Sistema</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">4</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="newsfeeds" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-rss mr-2"></i> Newsfeeds</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="privacidade" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-user-shield mr-2"></i> Privacidade</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="tags" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-tags mr-2"></i> Tags</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="usuarios" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-users mr-2"></i> Usuários</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">7</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-category="wrapper" class="px-4 py-2 rounded-md flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span><i class="fas fa-window-maximize mr-2"></i> Wrapper</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded-full">1</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <!-- Artigos -->
+                    <div data-content="artigos">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Artigos</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Artigo Específico -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-file-alt mr-2 text-primary"></i>
+                                    Artigo Específico
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe um artigo específico.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="border-b dark:border-gray-700 pb-2 mb-4">
+                                        <h4 class="text-xl font-bold">Título do Artigo</h4>
+                                        <div class="text-sm text-gray-500 dark:text-gray-400 flex items-center mt-1">
+                                            <i class="far fa-calendar-alt mr-1"></i> 15 Junho, 2023
+                                            <span class="mx-2">|</span>
+                                            <i class="far fa-user mr-1"></i> Autor
+                                        </div>
+                                    </div>
+                                    <div class="prose dark:prose-invert max-w-none">
+                                        <p>Este é o conteúdo completo de um artigo específico. Aqui você encontrará todo o texto, imagens e outros elementos que compõem o artigo.</p>
+                                        <p class="mt-2">O layout permite a leitura do artigo na íntegra, com todos os seus detalhes e formatação.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Artigos Arquivados -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-archive mr-2 text-primary"></i>
+                                    Artigos Arquivados
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe todos os artigos arquivados.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Arquivos</h4>
+                                    <ul class="space-y-3">
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">
+                                                <div class="font-medium">Artigo Arquivado 1</div>
+                                                <div class="text-sm text-gray-500 dark:text-gray-400">15 Junho, 2022</div>
+                                            </a>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">
+                                                <div class="font-medium">Artigo Arquivado 2</div>
+                                                <div class="text-sm text-gray-500 dark:text-gray-400">3 Maio, 2022</div>
+                                            </a>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">
+                                                <div class="font-medium">Artigo Arquivado 3</div>
+                                                <div class="text-sm text-gray-500 dark:text-gray-400">12 Abril, 2022</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Artigos em Destaque -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-star mr-2 text-primary"></i>
+                                    Artigos em Destaque
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe todos os artigos em destaque, de uma ou mais categorias, em layout de uma ou múltiplas colunas.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Em Destaque</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="border dark:border-gray-700 rounded p-3">
+                                            <img src="https://picsum.photos/id/10/300/200" alt="Imagem do artigo" class="w-full h-40 object-cover rounded mb-2">
+                                            <h5 class="font-bold">Artigo em Destaque 1</h5>
+                                            <p class="text-sm line-clamp-2">Breve descrição do artigo em destaque para chamar a atenção dos leitores...</p>
+                                            <a href="#" class="text-primary text-sm mt-2 inline-block">Leia mais</a>
+                                        </div>
+                                        <div class="border dark:border-gray-700 rounded p-3">
+                                            <img src="https://picsum.photos/id/11/300/200" alt="Imagem do artigo" class="w-full h-40 object-cover rounded mb-2">
+                                            <h5 class="font-bold">Artigo em Destaque 2</h5>
+                                            <p class="text-sm line-clamp-2">Breve descrição do artigo em destaque para chamar a atenção dos leitores...</p>
+                                            <a href="#" class="text-primary text-sm mt-2 inline-block">Leia mais</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Blog de uma Categoria -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-blog mr-2 text-primary"></i>
+                                    Blog de uma Categoria
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe introduções de artigos em um layout com uma ou múltiplas colunas.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Categoria: Tecnologia</h4>
+                                    <div class="space-y-4">
+                                        <article class="border-b dark:border-gray-700 pb-4">
+                                            <h5 class="font-bold text-lg">Artigo do Blog 1</h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 20 Junho, 2023
+                                            </div>
+                                            <p class="mb-2">Introdução ao artigo que apresenta uma prévia do conteúdo completo. Esta seção tem como objetivo despertar o interesse do leitor...</p>
+                                            <a href="#" class="text-primary text-sm">Continue lendo</a>
+                                        </article>
+                                        <article class="border-b dark:border-gray-700 pb-4">
+                                            <h5 class="font-bold text-lg">Artigo do Blog 2</h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 18 Junho, 2023
+                                            </div>
+                                            <p class="mb-2">Introdução ao artigo que apresenta uma prévia do conteúdo completo. Esta seção tem como objetivo despertar o interesse do leitor...</p>
+                                            <a href="#" class="text-primary text-sm">Continue lendo</a>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Criar Artigo -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-pen-fancy mr-2 text-primary"></i>
+                                    Criar Artigo
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Cria um novo artigo.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Novo Artigo</h4>
+                                    <form>
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Título</label>
+                                            <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Título do artigo">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Categoria</label>
+                                            <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                <option>Tecnologia</option>
+                                                <option>Negócios</option>
+                                                <option>Cultura</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Conteúdo</label>
+                                            <textarea rows="5" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Conteúdo do artigo..."></textarea>
+                                        </div>
+                                        <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Publicar Artigo</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Lista de uma Categoria -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-list mr-2 text-primary"></i>
+                                    Lista de uma Categoria
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe uma lista de artigos de uma categoria.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Categoria: Negócios</h4>
+                                    <ul class="space-y-2">
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Como iniciar seu próprio negócio em 2023</a>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Estratégias de marketing para pequenas empresas</a>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Finanças corporativas: um guia básico</a>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Como liderar equipes remotas eficientemente</a>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Tendências de negócios para ficar de olho</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Listar todas as categorias -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-folder-tree mr-2 text-primary"></i>
+                                    Listar todas as categorias em uma árvore
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe uma lista de todas as categorias na árvore de categorias de artigo selecionado.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Categorias de Artigos</h4>
+                                    <ul class="space-y-2">
+                                        <li>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Tecnologia</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(23)</span>
+                                            </div>
+                                            <ul class="pl-6 mt-2 space-y-1">
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-folder mr-2 text-primary"></i>
+                                                        <a href="#" class="hover:text-primary">Programação</a>
+                                                        <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(12)</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-folder mr-2 text-primary"></i>
+                                                        <a href="#" class="hover:text-primary">Hardware</a>
+                                                        <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(8)</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Negócios</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(18)</span>
+                                            </div>
+                                        </li>
+                                        <li class="mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Cultura</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(15)</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Busca Inteligente -->
+                    <div data-content="busca" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Busca Inteligente</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Busca -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-search mr-2 text-primary"></i>
+                                    Busca
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">O layout padrão da busca.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="mb-6">
+                                        <form class="flex">
+                                            <input type="text" class="flex-1 p-2 border dark:border-gray-700 rounded-l text-base dark:bg-gray-700" placeholder="Buscar no site...">
+                                            <button type="button" class="bg-primary text-white py-2 px-4 rounded-r hover:bg-opacity-90">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="font-medium mb-2">Resultados da Busca</h4>
+                                        <div class="space-y-4">
+                                            <div class="border-b dark:border-gray-700 pb-3">
+                                                <h5 class="font-bold">
+                                                    <a href="#" class="hover:text-primary">Como configurar seu ambiente de desenvolvimento</a>
+                                                </h5>
+                                                <p class="text-sm my-1">Este artigo explica passo a passo como configurar um ambiente de desenvolvimento eficiente para projetos web...</p>
+                                                <div class="text-xs text-gray-500 dark:text-gray-400">
+                                                    <i class="far fa-folder mr-1"></i> Tecnologia
+                                                    <span class="mx-1">|</span>
+                                                    <i class="far fa-calendar-alt mr-1"></i> 10 Jun, 2023
+                                                </div>
+                                            </div>
+                                            <div class="border-b dark:border-gray-700 pb-3">
+                                                <h5 class="font-bold">
+                                                    <a href="#" class="hover:text-primary">10 dicas para melhorar a produtividade no desenvolvimento</a>
+                                                </h5>
+                                                <p class="text-sm my-1">Descubra como aumentar sua produtividade enquanto desenvolve software com estas dicas práticas...</p>
+                                                <div class="text-xs text-gray-500 dark:text-gray-400">
+                                                    <i class="far fa-folder mr-1"></i> Tecnologia
+                                                    <span class="mx-1">|</span>
+                                                    <i class="far fa-calendar-alt mr-1"></i> 5 Jun, 2023
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Configurações -->
+                    <div data-content="configuracoes" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Configurações</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Mostrar as opções do tema -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-palette mr-2 text-primary"></i>
+                                    Mostrar as opções do tema
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Mostra as opções dos parâmetros do tema se o tema permitir isso.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Opções do Tema</h4>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h5 class="font-medium mb-2">Cores</h5>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div>
+                                                    <label class="block text-sm mb-1">Cor Principal</label>
+                                                    <div class="flex">
+                                                        <input type="color" value="#5D5CDE" class="h-10 w-10">
+                                                        <input type="text" value="#5D5CDE" class="flex-1 p-2 border dark:border-gray-700 rounded-r text-base dark:bg-gray-700 ml-1">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Cor Secundária</label>
+                                                    <div class="flex">
+                                                        <input type="color" value="#34D399" class="h-10 w-10">
+                                                        <input type="text" value="#34D399" class="flex-1 p-2 border dark:border-gray-700 rounded-r text-base dark:bg-gray-700 ml-1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h5 class="font-medium mb-2">Layout</h5>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                <div>
+                                                    <label class="block text-sm mb-1">Largura do Site</label>
+                                                    <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                        <option>Fluido</option>
+                                                        <option>Fixo</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Posição da Barra Lateral</label>
+                                                    <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                        <option>Direita</option>
+                                                        <option>Esquerda</option>
+                                                        <option>Sem barra lateral</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h5 class="font-medium mb-2">Fontes</h5>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                <div>
+                                                    <label class="block text-sm mb-1">Fonte Principal</label>
+                                                    <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                        <option>Roboto</option>
+                                                        <option>Open Sans</option>
+                                                        <option>Lato</option>
+                                                        <option>Montserrat</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Tamanho da Fonte Base</label>
+                                                    <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                        <option>14px</option>
+                                                        <option>16px</option>
+                                                        <option>18px</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Salvar Configurações</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Opções das configurações do site -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-cogs mr-2 text-primary"></i>
+                                    Opções das configurações do site
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Mostra as opções das configurações globais do site.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Configurações Globais</h4>
+                                    <div class="space-y-6">
+                                        <div>
+                                            <h5 class="font-medium mb-3">Configurações do Site</h5>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label class="block text-sm mb-1">Nome do Site</label>
+                                                    <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="Meu Site">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Email do Administrador</label>
+                                                    <input type="email" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="admin@meusite.com">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Site Offline</label>
+                                                    <div class="flex items-center mt-1">
+                                                        <input type="radio" id="online" name="site_status" checked class="mr-1">
+                                                        <label for="online" class="mr-3">Não</label>
+                                                        <input type="radio" id="offline" name="site_status" class="mr-1">
+                                                        <label for="offline">Sim</label>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Mensagem Offline</label>
+                                                    <textarea class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" rows="2">Este site está temporariamente offline para manutenção. Por favor, volte mais tarde.</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h5 class="font-medium mb-3">SEO & Metadados</h5>
+                                            <div class="grid grid-cols-1 gap-4">
+                                                <div>
+                                                    <label class="block text-sm mb-1">Descrição do Site</label>
+                                                    <textarea class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" rows="2">Uma descrição concisa e informativa do seu site para os motores de busca.</textarea>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Palavras-chave</label>
+                                                    <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="palavra-chave1, palavra-chave2, palavra-chave3">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm mb-1">Robots</label>
+                                                    <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                        <option>Indexar, Seguir</option>
+                                                        <option>Indexar, Não Seguir</option>
+                                                        <option>Não Indexar, Seguir</option>
+                                                        <option>Não Indexar, Não Seguir</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Salvar Configurações</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contatos -->
+                    <div data-content="contatos" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Contatos</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Contato único -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-address-card mr-2 text-primary"></i>
+                                    Contato único
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Isso vincula às informações de contato de um contato.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="flex flex-col md:flex-row items-start gap-4">
+                                        <div class="w-32 h-32 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 mx-auto md:mx-0">
+                                            <i class="fas fa-user text-5xl text-gray-400 dark:text-gray-500"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="text-xl font-bold">João Silva</h4>
+                                            <p class="text-gray-600 dark:text-gray-400 italic mb-3">Diretor de Marketing</p>
+                                            
+                                            <div class="space-y-2">
+                                                <div class="flex items-center">
+                                                    <i class="fas fa-envelope w-6 text-primary"></i>
+                                                    <span>joao.silva@empresa.com</span>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <i class="fas fa-phone w-6 text-primary"></i>
+                                                    <span>(11) 99999-8888</span>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <i class="fas fa-map-marker-alt w-6 text-primary"></i>
+                                                    <span>São Paulo, SP</span>
+                                                </div>
+                                                <div class="mt-3 pt-3 border-t dark:border-gray-700">
+                                                    <h5 class="font-medium mb-2">Biografia</h5>
+                                                    <p class="text-sm">João Silva é um profissional de marketing com mais de 10 anos de experiência em estratégias digitais. Especialista em SEO e marketing de conteúdo.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Contatos destacados -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-star mr-2 text-primary"></i>
+                                    Contatos destacados
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Esta visualização lista os contatos destacados.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Contatos Destacados</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="border dark:border-gray-700 rounded p-3 flex items-center">
+                                            <div class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                <i class="fas fa-user text-gray-400 dark:text-gray-500"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h5 class="font-bold">Maria Souza</h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Diretora de Operações</p>
+                                                <a href="#" class="text-primary text-sm">Ver perfil</a>
+                                            </div>
+                                        </div>
+                                        <div class="border dark:border-gray-700 rounded p-3 flex items-center">
+                                            <div class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                <i class="fas fa-user text-gray-400 dark:text-gray-500"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h5 class="font-bold">Carlos Santos</h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">CTO</p>
+                                                <a href="#" class="text-primary text-sm">Ver perfil</a>
+                                            </div>
+                                        </div>
+                                        <div class="border dark:border-gray-700 rounded p-3 flex items-center">
+                                            <div class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                <i class="fas fa-user text-gray-400 dark:text-gray-500"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h5 class="font-bold">Ana Oliveira</h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Diretora Financeira</p>
+                                                <a href="#" class="text-primary text-sm">Ver perfil</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Criar contato -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-user-plus mr-2 text-primary"></i>
+                                    Criar contato
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Criar um novo contato.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Novo Contato</h4>
+                                    <form>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Nome</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Nome">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Sobrenome</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Sobrenome">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Email</label>
+                                                <input type="email" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="email@exemplo.com">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Telefone</label>
+                                                <input type="tel" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="(00) 00000-0000">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Categoria</label>
+                                                <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                    <option>Equipe</option>
+                                                    <option>Clientes</option>
+                                                    <option>Parceiros</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Cargo</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Cargo">
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Biografia</label>
+                                            <textarea rows="3" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Breve biografia..."></textarea>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Foto</label>
+                                            <input type="file" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                        </div>
+                                        <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Criar Contato</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Listar contatos em uma categoria -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-list-ul mr-2 text-primary"></i>
+                                    Listar contatos em uma categoria
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Esta exibição lista os contatos em uma categoria.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Categoria: Equipe</h4>
+                                    <table class="w-full border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-100 dark:bg-gray-700">
+                                                <th class="p-2 text-left border-b dark:border-gray-600">Nome</th>
+                                                <th class="p-2 text-left border-b dark:border-gray-600 hidden md:table-cell">Cargo</th>
+                                                <th class="p-2 text-left border-b dark:border-gray-600 hidden md:table-cell">Email</th>
+                                                <th class="p-2 text-left border-b dark:border-gray-600">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b dark:border-gray-700">
+                                                <td class="p-2">João Silva</td>
+                                                <td class="p-2 hidden md:table-cell">Diretor de Marketing</td>
+                                                <td class="p-2 hidden md:table-cell">joao.silva@empresa.com</td>
+                                                <td class="p-2">
+                                                    <a href="#" class="text-primary text-sm">Ver perfil</a>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b dark:border-gray-700">
+                                                <td class="p-2">Maria Souza</td>
+                                                <td class="p-2 hidden md:table-cell">Diretora de Operações</td>
+                                                <td class="p-2 hidden md:table-cell">maria.souza@empresa.com</td>
+                                                <td class="p-2">
+                                                    <a href="#" class="text-primary text-sm">Ver perfil</a>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b dark:border-gray-700">
+                                                <td class="p-2">Carlos Santos</td>
+                                                <td class="p-2 hidden md:table-cell">CTO</td>
+                                                <td class="p-2 hidden md:table-cell">carlos.santos@empresa.com</td>
+                                                <td class="p-2">
+                                                    <a href="#" class="text-primary text-sm">Ver perfil</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Listar todas as categorias -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-sitemap mr-2 text-primary"></i>
+                                    Listar todas as categorias em uma árvore de categorias para contatos
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Mostra uma lista contendo as categorias em uma árvore de categorias para contatos.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Categorias de Contatos</h4>
+                                    <ul class="space-y-2">
+                                        <li>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Equipe</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(15)</span>
+                                            </div>
+                                            <ul class="pl-6 mt-2 space-y-1">
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-folder mr-2 text-primary"></i>
+                                                        <a href="#" class="hover:text-primary">Diretoria</a>
+                                                        <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(5)</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-folder mr-2 text-primary"></i>
+                                                        <a href="#" class="hover:text-primary">Desenvolvimento</a>
+                                                        <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(10)</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Clientes</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(28)</span>
+                                            </div>
+                                        </li>
+                                        <li class="mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Parceiros</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(12)</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Links de Sistema -->
+                    <div data-content="links" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Links de Sistema</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Apelido de Item de Menu -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-exchange-alt mr-2 text-primary"></i>
+                                    Apelido de Item de Menu
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Cria um apelido para outro item de menu.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="flex items-center p-2 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 rounded mb-4">
+                                        <i class="fas fa-info-circle mr-2"></i>
+                                        <p class="text-sm">Um apelido redireciona para outro item de menu, permitindo que o mesmo conteúdo seja acessado a partir de diferentes locais no menu.</p>
+                                    </div>
+                                    
+                                    <div class="flex flex-col md:flex-row items-start gap-4">
+                                        <div class="flex-1 w-full md:border-r dark:border-gray-700 pr-0 md:pr-4">
+                                            <h4 class="font-medium mb-2">Apelido no Menu</h4>
+                                            <img src="https://picsum.photos/id/0/300/200" alt="Menu com apelido" class="w-full h-auto rounded border dark:border-gray-700 mb-2">
+                                            <p class="text-sm">Menu com um item chamado "Sobre Nós" que é um apelido para o conteúdo de "Quem Somos"</p>
+                                        </div>
+                                        <div class="flex-1 w-full">
+                                            <h4 class="font-medium mb-2">Item de Menu Original</h4>
+                                            <img src="https://picsum.photos/id/1/300/200" alt="Item original" class="w-full h-auto rounded border dark:border-gray-700 mb-2">
+                                            <p class="text-sm">O conteúdo original de "Quem Somos" para o qual o apelido aponta</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Separador -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-grip-lines mr-2 text-primary"></i>
+                                    Separador
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Um separador com ou sem um nome de campo, útil para separar itens de um menu.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="mb-4">
+                                        <h4 class="font-medium mb-2">Exemplo de Menu com Separadores</h4>
+                                        <div class="border dark:border-gray-700 rounded p-3">
+                                            <ul class="space-y-2">
+                                                <li><a href="#" class="hover:text-primary">Início</a></li>
+                                                <li><a href="#" class="hover:text-primary">Sobre</a></li>
+                                                <li><a href="#" class="hover:text-primary">Serviços</a></li>
+                                                <li class="border-t dark:border-gray-700 pt-2 text-gray-500 dark:text-gray-400 text-sm font-medium">PRODUTOS</li>
+                                                <li><a href="#" class="hover:text-primary">Produto 1</a></li>
+                                                <li><a href="#" class="hover:text-primary">Produto 2</a></li>
+                                                <li><a href="#" class="hover:text-primary">Produto 3</a></li>
+                                                <li class="border-t dark:border-gray-700 pt-2 my-1"></li>
+                                                <li><a href="#" class="hover:text-primary">Blog</a></li>
+                                                <li><a href="#" class="hover:text-primary">Contato</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <div class="flex-1">
+                                            <h5 class="text-sm font-medium mb-2">Separador com título</h5>
+                                            <div class="border dark:border-gray-700 p-2 rounded">
+                                                <div class="border-t dark:border-gray-700 pt-2 text-gray-500 dark:text-gray-400 text-sm font-medium">PRODUTOS</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h5 class="text-sm font-medium mb-2">Separador sem título</h5>
+                                            <div class="border dark:border-gray-700 p-2 rounded">
+                                                <div class="border-t dark:border-gray-700 my-2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Título do Menu -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-heading mr-2 text-primary"></i>
+                                    Título do Menu
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Um título para o pai dos itens de submenu.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="font-medium mb-3">Exemplo de Títulos de Menu com Submenus</h4>
+                                    
+                                    <div class="border dark:border-gray-700 rounded p-3">
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="hover:text-primary">Início</a></li>
+                                            <li>
+                                                <div class="font-medium text-primary mb-1">Produtos</div>
+                                                <ul class="pl-4 space-y-1 text-sm border-l dark:border-gray-700">
+                                                    <li><a href="#" class="hover:text-primary">Categoria 1</a></li>
+                                                    <li><a href="#" class="hover:text-primary">Categoria 2</a></li>
+                                                    <li><a href="#" class="hover:text-primary">Categoria 3</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="mt-2">
+                                                <div class="font-medium text-primary mb-1">Serviços</div>
+                                                <ul class="pl-4 space-y-1 text-sm border-l dark:border-gray-700">
+                                                    <li><a href="#" class="hover:text-primary">Consultoria</a></li>
+                                                    <li><a href="#" class="hover:text-primary">Treinamento</a></li>
+                                                    <li><a href="#" class="hover:text-primary">Suporte</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="mt-2"><a href="#" class="hover:text-primary">Contato</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                                        <div class="flex-1">
+                                            <h5 class="text-sm font-medium mb-2">Título do Menu (sem link)</h5>
+                                            <div class="border dark:border-gray-700 p-2 rounded">
+                                                <div class="font-medium text-primary">Produtos</div>
+                                                <ul class="pl-4 space-y-1 text-sm border-l dark:border-gray-700 mt-1">
+                                                    <li><a href="#" class="hover:text-primary">Item 1</a></li>
+                                                    <li><a href="#" class="hover:text-primary">Item 2</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- URL -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-link mr-2 text-primary"></i>
+                                    URL
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Uma URL externa ou interna.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="mb-4">
+                                        <h4 class="font-medium mb-2">Exemplos de Links</h4>
+                                        <div class="border dark:border-gray-700 rounded p-3">
+                                            <ul class="space-y-3">
+                                                <li>
+                                                    <a href="#" class="flex items-center hover:text-primary">
+                                                        <i class="fas fa-external-link-alt mr-2 text-xs text-gray-500 dark:text-gray-400"></i>
+                                                        <span>Link Externo (abre em nova janela)</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="flex items-center hover:text-primary">
+                                                        <i class="fas fa-link mr-2 text-xs text-gray-500 dark:text-gray-400"></i>
+                                                        <span>Link Interno</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-3">
+                                        <div>
+                                            <h5 class="text-sm font-medium mb-2">Configuração de URL no Menu</h5>
+                                            <div class="border dark:border-gray-700 rounded p-3">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                    <div>
+                                                        <label class="block text-sm mb-1">URL</label>
+                                                        <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="https://exemplo.com/pagina">
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-sm mb-1">Título do Link</label>
+                                                        <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="Visite Nossa Página">
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3">
+                                                    <label class="flex items-center text-sm">
+                                                        <input type="checkbox" class="mr-2" checked>
+                                                        Abrir em nova janela
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsfeeds -->
+                    <div data-content="newsfeeds" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Newsfeeds</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Lista fontes de notícias em uma Categoria -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-rss mr-2 text-primary"></i>
+                                    Lista fontes de notícias em uma Categoria
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe todas as fontes de notícias de uma categoria.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Categoria: Tecnologia</h4>
+                                    <div class="space-y-4">
+                                        <div class="border dark:border-gray-700 rounded p-3">
+                                            <h5 class="font-bold flex items-center">
+                                                <i class="fas fa-rss text-orange-500 mr-2"></i>
+                                                TechWorld
+                                            </h5>
+                                            <p class="text-sm my-2">Notícias e análises sobre tecnologia, gadgets e inovação.</p>
+                                            <a href="#" class="text-primary text-sm">Acessar feed</a>
+                                        </div>
+                                        <div class="border dark:border-gray-700 rounded p-3">
+                                            <h5 class="font-bold flex items-center">
+                                                <i class="fas fa-rss text-orange-500 mr-2"></i>
+                                                Software & Desenvolvimento
+                                            </h5>
+                                            <p class="text-sm my-2">Notícias sobre desenvolvimento de software, programação e tendências.</p>
+                                            <a href="#" class="text-primary text-sm">Acessar feed</a>
+                                        </div>
+                                        <div class="border dark:border-gray-700 rounded p-3">
+                                            <h5 class="font-bold flex items-center">
+                                                <i class="fas fa-rss text-orange-500 mr-2"></i>
+                                                Hardware News
+                                            </h5>
+                                            <p class="text-sm my-2">Informações sobre lançamentos de hardware, reviews e testes.</p>
+                                            <a href="#" class="text-primary text-sm">Acessar feed</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Listar todas as categorias -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-sitemap mr-2 text-primary"></i>
+                                    Listar todas as categorias em uma árvore de categorias de fontes de notícias
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe uma lista de todas as categorias na árvore das fontes de notícias selecionada.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Categorias de Fontes de Notícias</h4>
+                                    <ul class="space-y-2">
+                                        <li>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Tecnologia</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(3)</span>
+                                            </div>
+                                            <ul class="pl-6 mt-2 space-y-1">
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-folder mr-2 text-primary"></i>
+                                                        <a href="#" class="hover:text-primary">Software</a>
+                                                        <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(1)</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-folder mr-2 text-primary"></i>
+                                                        <a href="#" class="hover:text-primary">Hardware</a>
+                                                        <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(1)</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Negócios</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(2)</span>
+                                            </div>
+                                        </li>
+                                        <li class="mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Política</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(2)</span>
+                                            </div>
+                                        </li>
+                                        <li class="mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-folder mr-2 text-primary"></i>
+                                                <a href="#" class="hover:text-primary">Entretenimento</a>
+                                                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">(3)</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Uma Fonte de Notícias -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-newspaper mr-2 text-primary"></i>
+                                    Uma Fonte de Notícias
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe uma única fonte de notícias.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="border-b dark:border-gray-700 pb-3 mb-4">
+                                        <h4 class="text-xl font-bold flex items-center">
+                                            <i class="fas fa-rss text-orange-500 mr-2"></i>
+                                            TechWorld
+                                        </h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Fonte de notícias sobre tecnologia e inovação</p>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <article class="border-b dark:border-gray-700 pb-3">
+                                            <h5 class="font-bold">
+                                                <a href="#" class="hover:text-primary">Novos smartphones serão lançados no próximo mês</a>
+                                            </h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 20 Jun, 2023 - 14:30
+                                            </div>
+                                            <p class="text-sm">Os principais fabricantes de smartphones anunciaram que lançarão novos modelos no próximo mês. Espera-se que...</p>
+                                        </article>
+                                        <article class="border-b dark:border-gray-700 pb-3">
+                                            <h5 class="font-bold">
+                                                <a href="#" class="hover:text-primary">Inteligência artificial está revolucionando o setor de saúde</a>
+                                            </h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 19 Jun, 2023 - 10:15
+                                            </div>
+                                            <p class="text-sm">Novas aplicações de inteligência artificial estão transformando a maneira como os médicos diagnosticam doenças...</p>
+                                        </article>
+                                        <article class="border-b dark:border-gray-700 pb-3">
+                                            <h5 class="font-bold">
+                                                <a href="#" class="hover:text-primary">Empresa de tecnologia abre novo centro de desenvolvimento</a>
+                                            </h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 18 Jun, 2023 - 16:45
+                                            </div>
+                                            <p class="text-sm">Uma das maiores empresas de tecnologia do mundo anunciou a abertura de um novo centro de desenvolvimento...</p>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacidade -->
+                    <div data-content="privacidade" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Privacidade</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Confirmar Requisição -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-check-circle mr-2 text-primary"></i>
+                                    Confirmar Requisição
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Mostra um formulário para confirmar uma requisição de informações.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Confirmar Requisição de Privacidade</h4>
+                                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded border border-yellow-200 dark:border-yellow-800 text-yellow-800 dark:text-yellow-200 mb-4">
+                                        <p class="text-sm">Para prosseguir com sua requisição de dados, precisamos confirmar sua identidade. Por favor, verifique as informações abaixo e forneça o código de confirmação enviado para seu e-mail.</p>
+                                    </div>
+                                    
+                                    <form>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Tipo de Requisição</label>
+                                                <div class="p-2 border dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-base">Exportação de Dados Pessoais</div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Data da Solicitação</label>
+                                                <div class="p-2 border dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-base">20/06/2023</div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Email</label>
+                                                <div class="p-2 border dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-base">usuario@exemplo.com</div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Código de Confirmação</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Digite o código enviado por e-mail">
+                                            </div>
+                                            <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Confirmar Requisição</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Criar Requisição -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-file-alt mr-2 text-primary"></i>
+                                    Criar Requisição
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe um formulário para enviar uma requisição de informações.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Nova Requisição de Privacidade</h4>
+                                    <form>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Tipo de Requisição</label>
+                                                <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                    <option>Exportação de Dados Pessoais</option>
+                                                    <option>Exclusão de Dados Pessoais</option>
+                                                    <option>Modificação de Dados Pessoais</option>
+                                                    <option>Revogação de Consentimento</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Nome Completo</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Seu nome completo">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Email</label>
+                                                <input type="email" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="seu.email@exemplo.com">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Detalhes da Requisição</label>
+                                                <textarea rows="3" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Forneça mais detalhes sobre sua solicitação..."></textarea>
+                                            </div>
+                                            <div>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2">
+                                                    Confirmo que sou o titular dos dados e todas as informações fornecidas são verdadeiras.
+                                                </label>
+                                            </div>
+                                            <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Enviar Requisição</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Estender Concessão -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-hourglass-half mr-2 text-primary"></i>
+                                    Estender Concessão
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe um formulário para estender a concessão de privacidade.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Estender Concessão de Privacidade</h4>
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200 mb-4">
+                                        <p class="text-sm">Sua concessão de consentimento para o processamento de dados expirará em breve. Use este formulário para estender o consentimento se desejar continuar utilizando nossos serviços.</p>
+                                    </div>
+                                    
+                                    <form>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Concessão Atual</label>
+                                                <div class="p-2 border dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-base">Processamento de Dados Pessoais para Marketing</div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Data de Expiração Atual</label>
+                                                <div class="p-2 border dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-700 text-base">30/06/2023</div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Novo Período de Concessão</label>
+                                                <select class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                    <option>6 meses</option>
+                                                    <option>1 ano</option>
+                                                    <option>2 anos</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2">
+                                                    Li e concordo com a <a href="#" class="text-primary">Política de Privacidade</a> atualizada.
+                                                </label>
+                                            </div>
+                                            <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Estender Concessão</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div data-content="tags" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Tags</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Itens marcados -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-tags mr-2 text-primary"></i>
+                                    Itens marcados
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe uma lista de itens com marcadores específicos.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="mb-4">
+                                        <h4 class="text-lg font-bold">Itens com a tag: <span class="bg-primary text-white px-2 py-1 rounded text-sm">desenvolvimento</span></h4>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <article class="border-b dark:border-gray-700 pb-3">
+                                            <h5 class="font-bold">
+                                                <a href="#" class="hover:text-primary">Introdução ao desenvolvimento web moderno</a>
+                                            </h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 25 Jun, 2023
+                                                <span class="mx-1">|</span>
+                                                <i class="far fa-folder mr-1"></i> Tecnologia
+                                            </div>
+                                            <p class="text-sm mb-2">Um guia abrangente sobre as tecnologias e frameworks mais recentes para desenvolvimento web.</p>
+                                            <div class="flex flex-wrap gap-1 mt-2">
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">desenvolvimento</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">web</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">javascript</span>
+                                            </div>
+                                        </article>
+                                        <article class="border-b dark:border-gray-700 pb-3">
+                                            <h5 class="font-bold">
+                                                <a href="#" class="hover:text-primary">Melhores práticas para desenvolvimento de aplicativos móveis</a>
+                                            </h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 20 Jun, 2023
+                                                <span class="mx-1">|</span>
+                                                <i class="far fa-folder mr-1"></i> Tecnologia
+                                            </div>
+                                            <p class="text-sm mb-2">Descubra as melhores práticas e dicas para desenvolver aplicativos móveis de alta qualidade.</p>
+                                            <div class="flex flex-wrap gap-1 mt-2">
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">desenvolvimento</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">mobile</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">apps</span>
+                                            </div>
+                                        </article>
+                                        <article class="border-b dark:border-gray-700 pb-3">
+                                            <h5 class="font-bold">
+                                                <a href="#" class="hover:text-primary">Metodologias ágeis para equipes de desenvolvimento</a>
+                                            </h5>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400 my-1">
+                                                <i class="far fa-calendar-alt mr-1"></i> 15 Jun, 2023
+                                                <span class="mx-1">|</span>
+                                                <i class="far fa-folder mr-1"></i> Negócios
+                                            </div>
+                                            <p class="text-sm mb-2">Como implementar metodologias ágeis em equipes de desenvolvimento para aumentar a produtividade.</p>
+                                            <div class="flex flex-wrap gap-1 mt-2">
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">desenvolvimento</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">agile</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">gestão</span>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Lista compacta de itens com tags -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-list mr-2 text-primary"></i>
+                                    Lista compacta de itens com tags
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Lista de itens atribuídos com os marcadores selecionados.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="mb-4">
+                                        <h4 class="text-lg font-bold">Itens com tags: <span class="bg-primary text-white px-2 py-1 rounded text-sm">javascript</span> ou <span class="bg-primary text-white px-2 py-1 rounded text-sm">design</span></h4>
+                                    </div>
+                                    
+                                    <ul class="space-y-2">
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Introdução ao desenvolvimento web moderno</a>
+                                            <div class="flex flex-wrap gap-1 mt-1">
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">web</span>
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">javascript</span>
+                                            </div>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Princípios de UI/UX para designers modernos</a>
+                                            <div class="flex flex-wrap gap-1 mt-1">
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">design</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">ui</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">ux</span>
+                                            </div>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Frameworks JavaScript para 2023</a>
+                                            <div class="flex flex-wrap gap-1 mt-1">
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">javascript</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">frameworks</span>
+                                            </div>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Design Thinking: o que é e como aplicar</a>
+                                            <div class="flex flex-wrap gap-1 mt-1">
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">design</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">inovação</span>
+                                            </div>
+                                        </li>
+                                        <li class="border-b dark:border-gray-700 pb-2">
+                                            <a href="#" class="hover:text-primary">Tipografia e cores no design de interfaces</a>
+                                            <div class="flex flex-wrap gap-1 mt-1">
+                                                <span class="bg-primary text-white px-2 py-0.5 rounded-full text-xs">design</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">tipografia</span>
+                                                <span class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full text-xs">cores</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Listar Todas as Tags -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-tag mr-2 text-primary"></i>
+                                    Listar Todas as Tags
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Isto leva a uma lista detalhada de todos os marcadores.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Todas as Tags</h4>
+                                    
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>javascript</span>
+                                            <span class="ml-1 text-xs">(15)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>design</span>
+                                            <span class="ml-1 text-xs">(12)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>web</span>
+                                            <span class="ml-1 text-xs">(10)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>desenvolvimento</span>
+                                            <span class="ml-1 text-xs">(9)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>mobile</span>
+                                            <span class="ml-1 text-xs">(7)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>ui</span>
+                                            <span class="ml-1 text-xs">(6)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>ux</span>
+                                            <span class="ml-1 text-xs">(6)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>marketing</span>
+                                            <span class="ml-1 text-xs">(5)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>frameworks</span>
+                                            <span class="ml-1 text-xs">(5)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>agile</span>
+                                            <span class="ml-1 text-xs">(4)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>business</span>
+                                            <span class="ml-1 text-xs">(4)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>gestão</span>
+                                            <span class="ml-1 text-xs">(3)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>tipografia</span>
+                                            <span class="ml-1 text-xs">(3)</span>
+                                        </a>
+                                        <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white px-3 py-1 rounded-full text-sm transition-colors flex items-center">
+                                            <span>cores</span>
+                                            <span class="ml-1 text-xs">(3)</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Usuários -->
+                    <div data-content="usuarios" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Usuários</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Editar Perfil do Usuário -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-user-edit mr-2 text-primary"></i>
+                                    Editar Perfil do Usuário
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Edita um Perfil de Usuário.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Editar Perfil</h4>
+                                    <form>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Nome</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="João">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Sobrenome</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="Silva">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Nome de Usuário</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="joao.silva" disabled>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">O nome de usuário não pode ser alterado.</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium mb-1">Email</label>
+                                                <input type="email" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="joao.silva@email.com">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Foto do Perfil</label>
+                                            <div class="flex items-center gap-4">
+                                                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                    <i class="fas fa-user text-lg text-gray-400 dark:text-gray-500"></i>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <input type="file" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Formatos permitidos: JPG, PNG, GIF. Tamanho máximo: 5MB</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Sobre Mim</label>
+                                            <textarea rows="3" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700">Olá, sou o João e trabalho com desenvolvimento web há 5 anos.</textarea>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium mb-1">Alterar Senha</label>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <input type="password" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Nova senha">
+                                                </div>
+                                                <div>
+                                                    <input type="password" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Confirmar nova senha">
+                                                </div>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Deixe em branco se não quiser alterar a senha.</p>
+                                        </div>
+                                        
+                                        <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Salvar Alterações</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Formulário de Acesso -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-sign-in-alt mr-2 text-primary"></i>
+                                    Formulário de Acesso
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe o Formulário de Acesso.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="max-w-md mx-auto">
+                                        <h4 class="text-lg font-bold mb-4 text-center">Login</h4>
+                                        <form>
+                                            <div class="mb-4">
+                                                <label class="block text-sm font-medium mb-1">Nome de Usuário</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Seu nome de usuário">
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="block text-sm font-medium mb-1">Senha</label>
+                                                <input type="password" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Sua senha">
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2">
+                                                    Lembrar-me
+                                                </label>
+                                            </div>
+                                            <button type="button" class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Entrar</button>
+                                            
+                                            <div class="mt-4 text-center text-sm">
+                                                <a href="#" class="text-primary hover:underline">Esqueceu sua senha?</a>
+                                                <span class="mx-2">|</span>
+                                                <a href="#" class="text-primary hover:underline">Esqueceu seu nome de usuário?</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Formulário de Cadastro -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-user-plus mr-2 text-primary"></i>
+                                    Formulário de Cadastro
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe o Formulário de Cadastro.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="max-w-md mx-auto">
+                                        <h4 class="text-lg font-bold mb-4 text-center">Criar Conta</h4>
+                                        <form>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                                <div>
+                                                    <label class="block text-sm font-medium mb-1">Nome</label>
+                                                    <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Seu nome">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm font-medium mb-1">Sobrenome</label>
+                                                    <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Seu sobrenome">
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="block text-sm font-medium mb-1">Nome de Usuário</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Escolha um nome de usuário">
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="block text-sm font-medium mb-1">Email</label>
+                                                <input type="email" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Seu email">
+                                            </div>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                                <div>
+                                                    <label class="block text-sm font-medium mb-1">Senha</label>
+                                                    <input type="password" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Crie uma senha">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm font-medium mb-1">Confirmar Senha</label>
+                                                    <input type="password" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Confirme sua senha">
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2">
+                                                    Li e concordo com os <a href="#" class="text-primary hover:underline">Termos de Uso</a> e a <a href="#" class="text-primary hover:underline">Política de Privacidade</a>.
+                                                </label>
+                                            </div>
+                                            <button type="button" class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Criar Conta</button>
+                                            
+                                            <div class="mt-4 text-center text-sm">
+                                                Já tem uma conta? <a href="#" class="text-primary hover:underline">Faça login</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Perfil de Usuário -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-user mr-2 text-primary"></i>
+                                    Perfil de Usuário
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe o Perfil de Usuário.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="flex flex-col md:flex-row items-start gap-6">
+                                        <div class="w-32 h-32 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 mx-auto md:mx-0">
+                                            <i class="fas fa-user text-5xl text-gray-400 dark:text-gray-500"></i>
+                                        </div>
+                                        <div class="flex-1 text-center md:text-left">
+                                            <h4 class="text-xl font-bold">João Silva</h4>
+                                            <p class="text-gray-600 dark:text-gray-400 mb-3">@joao.silva</p>
+                                            
+                                            <div class="space-y-3">
+                                                <div>
+                                                    <h5 class="font-medium text-sm text-gray-500 dark:text-gray-400">Sobre Mim</h5>
+                                                    <p>Olá, sou o João e trabalho com desenvolvimento web há 5 anos. Especialista em JavaScript e frameworks modernos.</p>
+                                                </div>
+                                                
+                                                <div>
+                                                    <h5 class="font-medium text-sm text-gray-500 dark:text-gray-400">Informações de Contato</h5>
+                                                    <div class="flex items-center justify-center md:justify-start mt-1">
+                                                        <i class="fas fa-envelope w-6 text-primary"></i>
+                                                        <span>joao.silva@email.com</span>
+                                                    </div>
+                                                    <div class="flex items-center justify-center md:justify-start mt-1">
+                                                        <i class="fas fa-globe w-6 text-primary"></i>
+                                                        <a href="#" class="text-primary hover:underline">www.joaosilva.com</a>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="pt-3">
+                                                    <a href="#" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90 inline-block">
+                                                        <i class="fas fa-edit mr-1"></i> Editar Perfil
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Redefinir Senha -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-key mr-2 text-primary"></i>
+                                    Redefinir Senha
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe a opção de Redefinir Senha.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="max-w-md mx-auto">
+                                        <h4 class="text-lg font-bold mb-4 text-center">Redefinir Senha</h4>
+                                        <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200 mb-4">
+                                            <p class="text-sm">Digite seu endereço de email associado à sua conta e enviaremos um link para redefinir sua senha.</p>
+                                        </div>
+                                        <form>
+                                            <div class="mb-4">
+                                                <label class="block text-sm font-medium mb-1">Email</label>
+                                                <input type="email" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Seu email">
+                                            </div>
+                                            <button type="button" class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Enviar Link de Redefinição</button>
+                                            
+                                            <div class="mt-4 text-center text-sm">
+                                                <a href="#" class="text-primary hover:underline">Voltar para o login</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sair -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-sign-out-alt mr-2 text-primary"></i>
+                                    Sair
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Logout direto e redirecionar para página.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="max-w-md mx-auto text-center">
+                                        <div class="text-6xl text-primary mb-4">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                        </div>
+                                        <h4 class="text-lg font-bold mb-2">Saindo do Sistema</h4>
+                                        <p class="mb-4">Você será redirecionado para a página inicial após sair.</p>
+                                        <div class="flex justify-center gap-3">
+                                            <button type="button" class="bg-gray-200 dark:bg-gray-700 py-2 px-4 rounded hover:bg-gray-300 dark:hover:bg-gray-600">Cancelar</button>
+                                            <button type="button" class="bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Confirmar Saída</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Solicitação de lembrete do Nome de Usuário -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-user-tag mr-2 text-primary"></i>
+                                    Solicitação de lembrete do Nome de Usuário
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe solicitação de lembrete do Nome de Usuário.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <div class="max-w-md mx-auto">
+                                        <h4 class="text-lg font-bold mb-4 text-center">Esqueceu seu Nome de Usuário?</h4>
+                                        <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200 mb-4">
+                                            <p class="text-sm">Digite o endereço de email associado à sua conta e enviaremos seu nome de usuário.</p>
+                                        </div>
+                                        <form>
+                                            <div class="mb-4">
+                                                <label class="block text-sm font-medium mb-1">Email</label>
+                                                <input type="email" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" placeholder="Seu email">
+                                            </div>
+                                            <button type="button" class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-opacity-90">Enviar Lembrete</button>
+                                            
+                                            <div class="mt-4 text-center text-sm">
+                                                <a href="#" class="text-primary hover:underline">Voltar para o login</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wrapper -->
+                    <div data-content="wrapper" class="hidden">
+                        <h2 class="text-2xl font-bold mb-6 text-primary">Wrapper</h2>
+                        
+                        <div class="space-y-8">
+                            <!-- Invólucro do iframe -->
+                            <div class="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    <i class="fas fa-window-maximize mr-2 text-primary"></i>
+                                    Invólucro do iframe
+                                </h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Exibe um URL em um iframe.</p>
+                                
+                                <div class="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-800">
+                                    <h4 class="text-lg font-bold mb-4">Exemplo de Wrapper de iframe</h4>
+                                    
+                                    <div class="border dark:border-gray-700 p-2 rounded">
+                                        <div class="bg-gray-200 dark:bg-gray-700 p-2 rounded-t flex justify-between items-center">
+                                            <span class="font-medium">Página Externa</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                            </div>
+                                        </div>
+                                        <div class="border-x border-b dark:border-gray-700 bg-white dark:bg-gray-800 h-64 flex items-center justify-center">
+                                            <div class="text-center p-4">
+                                                <i class="fas fa-file-code text-4xl text-gray-400 dark:text-gray-500 mb-2"></i>
+                                                <p class="text-sm">Este é um exemplo de como um iframe apareceria no site.</p>
+                                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Aqui seria carregado o conteúdo de uma página externa.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <h5 class="font-medium mb-2 text-sm">Configuração do Wrapper</h5>
+                                        <div class="space-y-3">
+                                            <div>
+                                                <label class="block text-sm mb-1">URL</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="https://exemplo.com/pagina-incorporada">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm mb-1">Altura</label>
+                                                <input type="text" class="w-full p-2 border dark:border-gray-700 rounded text-base dark:bg-gray-700" value="500px">
+                                            </div>
+                                            <div>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="checkbox" class="mr-2" checked>
+                                                    Adicionar barra de rolagem quando necessário
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
